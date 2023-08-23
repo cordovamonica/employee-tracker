@@ -55,9 +55,9 @@ const start = () => {
     });
 };
 
-showDepartments = () => {
+viewDepartments = () => {
     console.log('Show all departments');
-    const query = 'SELECT * FROM department';
+    const sql = 'SELECT * FROM department';
 
     connection.promise().query(sql, (err, rows) => {
         if (err) throw err;
@@ -65,9 +65,9 @@ showDepartments = () => {
         });
         };
         
-showRoles = () => {
+viewRoles = () => {
     console.log('Show all roles');
-    const query = 'SELECT * FROM role';
+    const sql = 'SELECT * FROM role';
 
     connection.promise().query(sql, (err, rows) => {
         if (err) throw err;
@@ -75,9 +75,9 @@ showRoles = () => {
         });
         };
 
-showEmployees = () => {
+viewEmployees = () => {
     console.log('Show all employees');
-    const query = 'SELECT * FROM employee';
+    const sql = 'SELECT * FROM employee';
 
     connection.promise().query(sql, (err, rows) => {
         if (err) throw err;
@@ -229,6 +229,6 @@ addEmployee = () => {
     });
 }
 
-promptUser();
+// promptUser();
 
     
