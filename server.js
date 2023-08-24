@@ -90,7 +90,7 @@ addDepartment = () => {
         message: 'What is the name of the department?'
     })
     .then(answer => {
-        connection.query('INSERT INTO department SET ?', answer, (err, res) => {
+        connection.query('INSERT INTO department SET ?', answer.addDepartment, (err, res) => {
             if (err) throw err;
             console.log('Department added.');
             start();
