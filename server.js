@@ -26,6 +26,7 @@ const start = () => {
             'Add an employee',
             'Add a department',
             'Add a role',
+            'Update an employee',
             'Exit'
         ]
     })
@@ -48,6 +49,9 @@ const start = () => {
         }
         if (action === 'Add a role') {
             addRole();
+        }
+        if (action === 'Update an employee') {
+            updateEmployee();
         }
         if (action === 'Exit') {
             connection.end();
@@ -153,8 +157,27 @@ addEmployee = () => {
     });
 };
 
-
-
-// promptUser();
+updateEmployee = () => {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'employee_id',
+            message: 'What is the ID of the employee you would like to update?'
+        },
+        {
+            type: 'input',
+            name: 'role_id',
+            message: 'What is the employee\'s new role ID?'
+        }
+    ])
+    .then(answer => {
+        connection.query('UPDATE employee SET role_id = ? WHERE id = ?', [answer.role_id, answer.employee_id], (err, res) => {
+            if (err) throw err;
+            console.log('Employee updated.');
+            start();
+        }
+        );
+    });
+};
 
     
