@@ -84,19 +84,26 @@ viewEmployees = () => {
 };
 
 addDepartment = () => {
-    inquirer.prompt({
-        type: 'input',
-        name: 'department',
-        message: 'What is the name of the department?'
-    })
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is the name of the department?'
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'What is the ID of the department?'
+        }
+    ])
     .then(answer => {
-        connection.query('INSERT INTO department SET ?', answer.addDepartment, (err, res) => {
+        connection.query('INSERT INTO department SET ?', answer, (err, res) => {
             if (err) throw err;
             console.log('Department added.');
             start();
         });
     });
-};
+}
 
 addRole = () => {
     inquirer.prompt([
